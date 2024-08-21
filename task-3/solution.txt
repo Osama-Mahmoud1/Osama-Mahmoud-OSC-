@@ -1,0 +1,32 @@
+mkdir project_files
+cd project_files
+mkdir reports logs data
+cd reports
+touch report1.md report2.md
+cd ~/Desktop/project_files/logs
+touch system.log error.log file1.pdf file2.pdf
+cd ~/Desktop/project_files/data
+touch data.csv info.txt
+nano ~/Desktop/project_files/reports/report1.md
+nano ~/Desktop/project_files/logs/system.log
+nano ~/Desktop/project_files/data/data.csv
+cd ~/Desktop/project_files/logs
+tar -cvf logs_backup.tar *.log *.pdf
+mv logs_backup.tar ~/Desktop/project_files/
+cd ~/Desktop/project_files/logs
+tar -xvf ~/Desktop/project_files/logs_backup.tar
+find ~ -type f -name "*.md"
+find ~/Desktop/project_files -type f -name "*.log"
+find ~/Desktop/project_files -type f -name "file1.pdf"
+find ~/Desktop/project_files -type f -iname "*.pdf"
+find ~/Desktop/project_files/logs -type f
+ln -s ~/Desktop/project_files/data/data.csv ~/Desktop/project_files/link_data.csv
+nano ~/Desktop/project_files/link_data.csv
+rm ~/Desktop/project_files/link_data.csv
+echo "Summary Start" > ~/Desktop/project_files/summary.txt
+date >> ~/Desktop/project_files/summary.txt
+wc -l ~/Desktop/project_files/summary.txt | tee -a ~/Desktop/project_files/summary.txt
+wc -w ~/Desktop/project_files/reports/report1.md
+wc -c ~/Desktop/project_files/logs/system.log >> ~/Desktop/project_files/summary.txt
+find ~/Desktop/project_files | wc -l >> ~/Desktop/project_files/summary.txt
+cat ~/Desktop/project_files/summary.txt
